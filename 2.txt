@@ -1,0 +1,19 @@
+2)
+
+I will re write the codes as follows. Reasons for changes are explained in comments:
+
+    // first check if email field is empty
+    if(isset($_POST['email']) && $_POST['email'] != '')
+    {
+         // remove any illegal characters to avoid possible email injections
+         $email_input = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);  
+          
+         // validate it in case someone mistyped it
+         if (!filter_var($email_input, FILTER_VALIDATE_EMAIL)) {
+             throw new Exception("$email_input is not a valid email address.");
+          } 
+        
+        // Run email command to notify user of account creation
+        system("/opt/app/accounts/notifynew.sh $email_input");
+    }
+
