@@ -1,0 +1,26 @@
+6)
+
+I will change the code as follows . Note that reasons are explained in comments :
+
+    // validate page field
+    if(isset($_GET['page']) && $_GET['page'] != '')
+    {
+        // remove all illegal url characters
+        $_GET['page'] = filter_var($_GET['page'], FILTER_SANITIZE_URL);
+        // we cant give user access to any random pages he / she can visit from this request so we need to restrict them to allowed pages
+        if (!in_array($_GET['page'], ['allowed_page1', 'allowed+page2']) {
+           throw new Exception ('unknown or invalid request');
+        }
+        echo '<title>'.$_GET['page'].'</title>';
+    }
+    else
+    {
+        $_GET['page'] = "index";
+        echo '<title>Welcome to site </title>';
+    }
+
+    $content = file_get_contents("/site/content/".$_GET['page']);
+    echo htmlspecialchars($content);
+    ..
+
+If there is an issue, how would you fix it?
