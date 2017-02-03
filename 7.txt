@@ -1,0 +1,6 @@
+
+7)
+
+Following regex will work for the problem:
+
+$regex = "/\/admin((\/scripts/(vuln|unsafe))|(\/lib\/blocked))(\.php)/";
