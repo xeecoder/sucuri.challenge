@@ -1,0 +1,9 @@
+5)
+
+I will follow the steps below to debug this problem:
+
+1) Will check application or framework logs for possible exceptions and cause
+2) Will check if this commit has overwritten any .htaccess files
+3) Will check web server logs for possible errors
+4) Will run the live mock in debug mode (using framework configuration or enabling php error directives) 
+5) Will run the live mock with partial commits of changes to see what commit did the destruction
