@@ -1,0 +1,15 @@
+4)
+
+pass field will require hashing before it is stored in DB. 
+This will ensure user password is not leaked in case of a possuble DB hijack (external or internal)
+I will use PHP password_hash as follows:
+
+if (isset( $_POST['pass']) &&  $_POST['pass'] != '') {
+    $options = [
+      'cost' => 11,
+      'salt' => 'd1RtyLiTtL35ecr3T',
+    ];
+    $dbPasswordHash = password_hash($_POST['pass'], PASSWORD_BCRYPT, $options)
+}
+
+In addition to that both pass and user fields requires to be validated again using the underlying validation rules of the system
